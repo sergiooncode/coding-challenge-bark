@@ -11,3 +11,4 @@ wheels/
 
 .idea/
 bark.db
+test.db

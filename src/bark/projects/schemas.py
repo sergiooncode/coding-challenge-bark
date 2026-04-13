@@ -4,7 +4,7 @@ from enum import Enum
 
 class InputQuote(BaseModel):
     seller_id: int = Field(strict=True)
-    message: str = Field(min_length=20)
+    message: str = Field(min_length=10)
     price_cents: int = Field(strict=True, gt=0)
 
 

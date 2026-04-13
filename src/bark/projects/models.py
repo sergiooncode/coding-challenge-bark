@@ -11,12 +11,12 @@ class Project(Base):
     __tablename__ = "projects"
     id = Column(Integer, primary_key=True)
     project_title = Column(String, nullable=False)
-    category_id = Column(Integer, nullable=False)
+    category_id = Column(Integer, nullable=True)
     buyer_user_id = Column(Integer, nullable=False)
     response_cap = Column(Integer, nullable=False)
     response_count = Column(Integer, nullable=False)
-    credits_required = Column(Integer, nullable=False)
-    is_urgent = Column(Boolean, nullable=False)
+    credits_required = Column(Integer, nullable=True)
+    is_urgent = Column(Boolean, nullable=False, default=False)
 
 
 class Quote(Base):
@@ -29,6 +29,4 @@ class Quote(Base):
 
     project_id = mapped_column(Integer, ForeignKey("projects.id"))
 
-    __table_args__ = (
-        UniqueConstraint("project_id", "seller_id"),
-    )
+    __table_args__ = (UniqueConstraint("project_id", "seller_id"),)
